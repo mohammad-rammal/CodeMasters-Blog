@@ -40,8 +40,11 @@ function Header() {
                     <FaMoon />
                 </Button>
                 <Link to="/sign-in">
-                    <Button gradientDuoTone="greenToBlue">Sign In</Button>
+                    <Button className="border-blue-900 bg-gradient-to-l from-green-200 to-blue-200  text-black hover:bg-gradient-to-l hover:text-white hover:from-green-500 hover:to-cyan-500 hover:border-green-500 border ">
+                        Sign In
+                    </Button>
                 </Link>
+
                 <Navbar.Toggle />
             </div>
 
@@ -50,8 +53,8 @@ function Header() {
                     as={Link}
                     to="/"
                     className={`block text-sm ${path === "/"
-                        ? "text-blue-500 font-bold bg-blue-300 md:bg-white"
-                        : "text-gray-700"
+                            ? "text-blue-500 font-bold bg-blue-300 md:bg-white"
+                            : "text-gray-700"
                         } hover:text-blue-500 hover:bg-blue-300 md:hover:bg-white p-2 rounded-md`}
                 >
                     <div className="flex justify-between">
@@ -63,18 +66,20 @@ function Header() {
                     as={Link}
                     to="/about"
                     className={`block my-3 md:my-0 text-sm ${path === "/about"
-                        ? "text-blue-500 font-bold bg-blue-300 md:bg-white"
-                        : "text-gray-700"
+                            ? "text-blue-500 font-bold bg-blue-300 md:bg-white"
+                            : "text-gray-700"
                         } hover:text-blue-500 hover:bg-blue-300 md:hover:bg-white p-2 rounded-md`}
                 >
-                    <div className="flex justify-between">About  <SiAboutdotme className="md:hidden" size={22} /></div>
+                    <div className="flex justify-between">
+                        About <SiAboutdotme className="md:hidden" size={22} />
+                    </div>
                 </Navbar.Link>
                 <Navbar.Link
                     as={Link}
                     to="/projects"
                     className={` block text-sm ${path === "/projects"
-                        ? "text-blue-500 font-bold bg-blue-300 md:bg-white"
-                        : "text-gray-700"
+                            ? "text-blue-500 font-bold bg-blue-300 md:bg-white"
+                            : "text-gray-700"
                         } hover:text-blue-500 hover:bg-blue-300 md:hover:bg-white p-2 rounded-md`}
                 >
                     <div className="flex justify-between">
