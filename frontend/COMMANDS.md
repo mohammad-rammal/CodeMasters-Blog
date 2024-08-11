@@ -9,3 +9,5 @@ npm i react-icons
 
 
 https://flowbite-react.com/
+
+npm run dev
