@@ -5,8 +5,8 @@ import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import Dashboard from "./pages/Dashboard";
 import Projects from "./pages/Projects";
-import Header from "./components/Header";
-import "flowbite/dist/flowbite.min.css";
+import Header from "./components/Header"; 
+import 'flowbite/dist/flowbite.css';
 
 
 export default function App() {
