@@ -36,8 +36,7 @@ function SignUp() {
       } else {
         toast.success("Signup successful!");
         if (res.ok) {
-          // Navigate to the login page or dashboard
-          navigate('/login'); // Update this path as needed
+          navigate('/sign-in'); 
         }
       }
     } catch (error) {

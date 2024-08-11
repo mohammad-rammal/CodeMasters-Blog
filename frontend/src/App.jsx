@@ -5,8 +5,9 @@ import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import Dashboard from "./pages/Dashboard";
 import Projects from "./pages/Projects";
-import Header from "./components/Header"; 
+import Header from "./components/Header";
 import 'flowbite/dist/flowbite.css';
+import Footer from "./components/Footer";
 
 
 export default function App() {
@@ -21,6 +22,7 @@ export default function App() {
         <Route path="projects" element={<Projects />} />
         <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }
