@@ -3,13 +3,17 @@ import { Alert, Button, Label, TextInput } from "flowbite-react";
 import { Circles } from "react-loader-spinner";
 import { useState } from "react";
 import { toast } from "react-toastify";
+import { useDispatch, useSelector } from "react-redux";
+import { signInFailure, signInStart, signInSuccess } from "../redux/user/userSlice";
 
 
 
 function SignIn() {
     const [formData, setFormData] = useState({});
-    const [errorMessage, setErrorMessage] = useState(null);
-    const [loading, setLoading] = useState(false);
+    const { loading, error: errorMessage } = useSelector(state => state.user)
+    // const [errorMessage, setErrorMessage] = useState(null);
+    // const [loading, setLoading] = useState(false);
+    const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const handleChange = (e) => {
@@ -19,11 +23,14 @@ function SignIn() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (!formData.email || !formData.password) {
-            return setErrorMessage("Missing Fields, Please fill all missing fields!");
+            return dispatch(signInFailure("Missing Fields, Please fill all missing fields!"));
+            // return setErrorMessage("Missing Fields, Please fill all missing fields!");
         }
         try {
-            setLoading(true);
-            setErrorMessage(null);
+            dispatch(signInStart());
+            // setLoading(true);
+            // setErrorMessage(null);
+
             const res = await fetch("/api/auth/signin", {
                 method: "POST",
                 headers: {
@@ -34,19 +41,22 @@ function SignIn() {
 
             const data = await res.json();
             if (data.success === false) {
-                toast.error("Login failed. Please try again!");
+                toast.error(dispatch(signInFailure(data.message)))
+                // toast.error("Login failed. Please try again!");
             } else {
                 toast.success("Login successful!");
                 if (res.ok) {
+                    dispatch(signInSuccess(data));
                     navigate('/');
                 }
             }
         } catch (error) {
             console.log(error.message);
             toast.error("An error occurred. Please try again.");
-        } finally {
-            setLoading(false);
         }
+        // finally {
+        //     setLoading(false);
+        // }
     };
 
     return (
