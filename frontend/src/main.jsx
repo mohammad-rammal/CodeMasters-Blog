@@ -7,6 +7,7 @@ import { store, persistor } from './redux/store.js';
 import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react';
 import { ToastContainer } from 'react-toastify';
+import ThemeProvider from './components/ThemeProvider.jsx';
 
 
 createRoot(document.getElementById('root')).render(
@@ -25,8 +26,11 @@ createRoot(document.getElementById('root')).render(
           pauseOnHover
           theme="colored"
         />
-        <App />
+        <ThemeProvider>
+          <App />
+        </ThemeProvider>
+
       </Provider>
     </StrictMode>
-    </PersistGate>
+  </PersistGate>
 )
