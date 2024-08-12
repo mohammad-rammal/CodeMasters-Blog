@@ -42,8 +42,8 @@ function Header() {
             </Button>
 
             <div className="flex gap-2 md:order-2">
-                <Button className="w-12 h-10 hidden sm:inline" color="gray"  pill onClick={() => dispatch(toggleTheme())}>
-                    {theme === 'light' ? <FaSun /> : <FaMoon />}
+                <Button className="w-12 h-10 hidden sm:inline dark:bg-transparent" color="gray"  pill onClick={() => dispatch(toggleTheme())}>
+                    {theme === 'light' ? <FaSun /> : <FaMoon  />}
 
                 </Button>
                 {
