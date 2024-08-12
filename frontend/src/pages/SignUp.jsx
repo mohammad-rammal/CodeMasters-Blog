@@ -4,6 +4,8 @@ import { Circles } from "react-loader-spinner";
 import { useState } from "react";
 import { toast } from "react-toastify";
 
+
+
 function SignUp() {
   const [formData, setFormData] = useState({});
   const [errorMessage, setErrorMessage] = useState(null);
@@ -36,7 +38,7 @@ function SignUp() {
       } else {
         toast.success("Signup successful!");
         if (res.ok) {
-          navigate('/sign-in'); 
+          navigate('/sign-in');
         }
       }
     } catch (error) {
@@ -123,7 +125,7 @@ function SignUp() {
           </form>
           <div className="flex gap-2 font-normal text-sm mt-5">
             <span>Already have an account?</span>
-            <Link to="/login" className="text-blue-500">
+            <Link to="/sign-in" className="text-blue-500">
               Log In
             </Link>
           </div>
