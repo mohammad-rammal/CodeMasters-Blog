@@ -1,39 +1,37 @@
-import { Sidebar } from "flowbite-react"
+import { Sidebar } from "flowbite-react";
 import { useEffect, useState } from "react";
-import { HiArrowSmRight, HiUser } from 'react-icons/hi'
+import { HiArrowSmRight, HiUser } from 'react-icons/hi';
 import { Link, useLocation } from "react-router-dom";
-
 
 function DashSidebar() {
     const location = useLocation();
     const [tab, setTab] = useState('');
 
     useEffect(() => {
-        const urlParamas = new URLSearchParams(location.search)
-        const tabFromUrl = urlParamas.get('tab');
+        const urlParams = new URLSearchParams(location.search);
+        const tabFromUrl = urlParams.get('tab');
 
         if (tabFromUrl) {
-            setTab(tabFromUrl)
+            setTab(tabFromUrl);
         }
-
-    }, [location.search])
+    }, [location.search]);
 
     return (
-        <Sidebar className="w-full md:w-56 ">
+        <Sidebar className="w-full md:w-56">
             <Sidebar.Items>
-                <Sidebar.ItemGroup >
-                    <Link to='/dashboard?tab=profile' className=" flex flex-col gap-3">
-                        <Sidebar.Item active={tab === 'profile'} icon={HiUser} label={"User"} labelColor='blue'>
-                            <span className="font-medium hover:text-blue-500">Sign Out</span>
-                        </Sidebar.Item>
-                        <Sidebar.Item icon={HiArrowSmRight} className='cursor-pointer ' >
-                            <span className="text-red-500 font-semibold">Sign Out</span>
+                <Sidebar.ItemGroup>
+                    <Link to='/dashboard?tab=profile'>
+                        <Sidebar.Item active={tab === 'profile'} icon={HiUser} label="User" labelColor='blue' as='div'>
+                            <span className="font-medium hover:text-blue-500">Profile</span>
                         </Sidebar.Item>
                     </Link>
+                    <Sidebar.Item icon={HiArrowSmRight} className='cursor-pointer' onClick={() => {/* Add your sign-out logic here */}}>
+                        <span className="text-red-500 font-semibold">Sign Out</span>
+                    </Sidebar.Item>
                 </Sidebar.ItemGroup>
             </Sidebar.Items>
-        </Sidebar >
-    )
+        </Sidebar>
+    );
 }
 
-export default DashSidebar
+export default DashSidebar;

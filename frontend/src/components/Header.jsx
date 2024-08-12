@@ -14,7 +14,6 @@ function Header() {
     const { theme } = useSelector(state => state.theme)
     const dispatch = useDispatch();
 
-    console.log('theme', theme)
     return (
         <Navbar className="border-b-2 py-1  lg:px-5">
             <Link
@@ -33,7 +32,7 @@ function Header() {
                     placeholder="Search for anything.."
                     rightIcon={AiOutlineSearch}
                     className="hidden lg:inline"
-                    
+
                 />
             </form>
 
@@ -42,8 +41,8 @@ function Header() {
             </Button>
 
             <div className="flex gap-2 md:order-2">
-                <Button className="w-12 h-10 hidden sm:inline dark:bg-transparent" color="gray"  pill onClick={() => dispatch(toggleTheme())}>
-                    {theme === 'light' ? <FaSun /> : <FaMoon  />}
+                <Button className="w-12 h-10 hidden sm:inline dark:bg-transparent" color="gray" pill onClick={() => dispatch(toggleTheme())}>
+                    {theme === 'light' ? <FaSun /> : <FaMoon />}
 
                 </Button>
                 {
