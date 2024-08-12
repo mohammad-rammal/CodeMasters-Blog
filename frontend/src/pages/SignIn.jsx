@@ -5,6 +5,7 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 import { signInFailure, signInStart, signInSuccess } from "../redux/user/userSlice";
+import OAuth from "../components/OAuth";
 
 
 
@@ -41,7 +42,7 @@ function SignIn() {
 
             const data = await res.json();
             if (data.success === false) {
-                toast.error(dispatch(signInFailure(data.message)))
+                dispatch(signInFailure(data.message))
                 // toast.error("Login failed. Please try again!");
             } else {
                 toast.success("Login successful!");
@@ -122,6 +123,7 @@ function SignIn() {
                                     "Sign In"
                                 )}
                             </Button>
+                            <OAuth />
                         </div>
                     </form>
                     <div className="flex gap-2 font-normal text-sm mt-5">

@@ -3,6 +3,7 @@ import { Alert, Button, Label, TextInput } from "flowbite-react";
 import { Circles } from "react-loader-spinner";
 import { useState } from "react";
 import { toast } from "react-toastify";
+import OAuth from "../components/OAuth";
 
 
 
@@ -121,6 +122,7 @@ function SignUp() {
                   "Sign Up"
                 )}
               </Button>
+              <OAuth />
             </div>
           </form>
           <div className="flex gap-2 font-normal text-sm mt-5">
