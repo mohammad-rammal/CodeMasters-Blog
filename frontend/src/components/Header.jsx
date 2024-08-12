@@ -1,14 +1,15 @@
-import { Button, Navbar, TextInput } from "flowbite-react";
+import { Avatar, Button, Dropdown, Navbar, TextInput } from "flowbite-react";
 import { Link, useLocation } from "react-router-dom";
 import { AiOutlineSearch } from "react-icons/ai";
 import { FaMoon } from "react-icons/fa";
 import { SiAboutdotme } from "react-icons/si";
 import { IoMdHome } from "react-icons/io";
-
+import { useSelector } from 'react-redux';
 import { FaBlogger } from "react-icons/fa";
 
 function Header() {
     const path = useLocation().pathname;
+    const { currentUser } = useSelector(state => state.user)
 
     return (
         <Navbar className="border-b-2">
@@ -39,22 +40,46 @@ function Header() {
                 <Button className="w-12 h-10 hidden sm:inline" color="gray" pill>
                     <FaMoon />
                 </Button>
-                <Link to="/sign-in">
-                    <Button className="border-blue-900 bg-gradient-to-l from-green-200 to-blue-200  text-black hover:bg-gradient-to-l hover:text-white hover:from-green-500 hover:to-cyan-500 hover:border-green-500 border ">
-                        Sign In
-                    </Button>
-                </Link>
+                {
+                    currentUser ? (
+                        <Dropdown
+                            arrowIcon={false}
+                            inline
+                            label={
+                                <Avatar
+                                    alt="user profile"
+                                    img={currentUser.profilePicture}
+                                    rounded
+                                />
+                            }
+                        >
+                            <Dropdown.Header>
+                                <span className="block text-sm font-medium">{currentUser.username}</span>
+                                <span className="block text-sm font-bold truncate">{currentUser.email}</span>
+                            </Dropdown.Header>
+                            <Link to={'/dashboard?tab=profile'}>
+                                <Dropdown.Item className=" text-sm font-medium">Profile</Dropdown.Item>
+                            </Link>
+                            <Dropdown.Divider />
+                            <Dropdown.Item className="text-red-500 font-medium">Sign Out</Dropdown.Item>
+                        </Dropdown>
+                    ) : (<Link to="/sign-in">
+                        <Button className="border-blue-900 bg-gradient-to-l from-green-200 to-blue-200  text-black hover:bg-gradient-to-l hover:text-white hover:from-green-500 hover:to-cyan-500 hover:border-green-500 border ">
+                            Sign In
+                        </Button>
+                    </Link>)
+                }
 
                 <Navbar.Toggle />
-            </div>
+            </div >
 
             <Navbar.Collapse className="md:flex md:w-44 md:space-x-4">
                 <Navbar.Link
                     as={Link}
                     to="/"
                     className={`block text-sm ${path === "/"
-                            ? "text-blue-500 font-bold bg-blue-300 md:bg-white"
-                            : "text-gray-700"
+                        ? "text-blue-500 font-bold bg-blue-300 md:bg-white"
+                        : "text-gray-700"
                         } hover:text-blue-500 hover:bg-blue-300 md:hover:bg-white p-2 rounded-md`}
                 >
                     <div className="flex justify-between">
@@ -66,8 +91,8 @@ function Header() {
                     as={Link}
                     to="/about"
                     className={`block my-3 md:my-0 text-sm ${path === "/about"
-                            ? "text-blue-500 font-bold bg-blue-300 md:bg-white"
-                            : "text-gray-700"
+                        ? "text-blue-500 font-bold bg-blue-300 md:bg-white"
+                        : "text-gray-700"
                         } hover:text-blue-500 hover:bg-blue-300 md:hover:bg-white p-2 rounded-md`}
                 >
                     <div className="flex justify-between">
@@ -78,8 +103,8 @@ function Header() {
                     as={Link}
                     to="/projects"
                     className={` block text-sm ${path === "/projects"
-                            ? "text-blue-500 font-bold bg-blue-300 md:bg-white"
-                            : "text-gray-700"
+                        ? "text-blue-500 font-bold bg-blue-300 md:bg-white"
+                        : "text-gray-700"
                         } hover:text-blue-500 hover:bg-blue-300 md:hover:bg-white p-2 rounded-md`}
                 >
                     <div className="flex justify-between">
@@ -87,7 +112,7 @@ function Header() {
                     </div>
                 </Navbar.Link>
             </Navbar.Collapse>
-        </Navbar>
+        </Navbar >
     );
 }
 
