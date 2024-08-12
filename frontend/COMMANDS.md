@@ -8,6 +8,7 @@ npm i react-icons
 npm install sweetalert2
 npm i react-loader-spinner
 npm install @reduxjs/toolkit react-redux
+npm i redux-persist
 
 
 https://flowbite-react.com/
